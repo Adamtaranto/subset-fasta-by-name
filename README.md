@@ -15,13 +15,13 @@ Settings:
     - Show this help message and exit
   - **-v, --version**:  
     - Show program's version number and exit
-  - **-i INFASTA, --inFasta <INFASTA>**:  
+  - **-i [INFASTA], --inFasta [INFASTA]**:  
     - Multi fasta to extract subset from
-  - **-n NAMEFILE, --nameFile <NAMEFILE>**:  
+  - **-n [NAMEFILE], --nameFile [NAMEFILE]**:  
     - Comma delimited file with target seq names in column one. If none given, all sequences will be returned.
-  - **-o OUTNAME, --outName <OUTNAME>**:  
+  - **-o [OUTNAME], --outName [OUTNAME]**:  
     - File for filtered sequence file to be written to.
-  - **-d OUTDIR, --outDir <OUTDIR>**:  
+  - **-d [OUTDIR], --outDir [OUTDIR]**:  
     - Directory for new sequence files to be written to.
   - **--splitMode**:  
     - If set split each sequence into new fasta file.
