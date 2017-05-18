@@ -11,20 +11,20 @@ A collection of functions for subsetting and reformatting sequences from fasta f
 
 Settings:
 
-**-h, --help**:  
-  - Show this help message and exit
-**-v, --version**:  
-  - Show program's version number and exit
-**-i INFASTA, --inFasta INFASTA**:  
-  - Multi fasta to extract subset from
-**-n NAMEFILE, --nameFile NAMEFILE**:  
-  - Comma delimited file with target seq names in column one. If none given, all sequences will be returned.
-**-o OUTNAME, --outName OUTNAME**:  
-  - File for filtered sequence file to be written to.
-**-d OUTDIR, --outDir OUTDIR**:  
-  - Directory for new sequence files to be written to.
-**--splitMode**:  
-  - If set split each sequence into new fasta file.
-**--OrthoMCLMode**:  
-  - If set treat nameFile as "groups" output from OrthoMCL clustering. Write member sequences to Cluster output files as multifasta.
+  - **-h, --help**:  
+    - Show this help message and exit
+  - **-v, --version**:  
+    - Show program's version number and exit
+  - **-i INFASTA, --inFasta <INFASTA>**:  
+    - Multi fasta to extract subset from
+  - **-n NAMEFILE, --nameFile <NAMEFILE>**:  
+    - Comma delimited file with target seq names in column one. If none given, all sequences will be returned.
+  - **-o OUTNAME, --outName <OUTNAME>**:  
+    - File for filtered sequence file to be written to.
+  - **-d OUTDIR, --outDir <OUTDIR>**:  
+    - Directory for new sequence files to be written to.
+  - **--splitMode**:  
+    - If set split each sequence into new fasta file.
+  - **--OrthoMCLMode**:  
+    - If set treat nameFile as "groups" output from OrthoMCL clustering. Write member sequences to Cluster output files as multifasta.
 
