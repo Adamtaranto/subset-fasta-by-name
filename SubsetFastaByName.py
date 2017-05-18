@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #python 2.7.5 requires biopython
 #SubsetFastaByName.py
-#Version 1. Adam Taranto, June 2015
+#Version 1.1.0 Adam Taranto, May 2017
 #Contact, Adam Taranto, adam.taranto@anu.edu.au
 
 #################################################################################################
@@ -13,6 +13,9 @@ import sys
 import os
 import argparse
 from Bio import SeqIO
+from _version import __version__
+
+__version__ = '1.1.0'
 
 def tempPathCheck(args):
 	if args.outDir:
@@ -109,7 +112,6 @@ def filtermode(reader, SeqMaster, args):
 	if args.outDir:
 			outName = os.path.join(args.outDir, args.outName)
 	fasta_file=open(outName,'w')
-
 	#Write records for seqs in name file to single new fasta file
 	if reader:
 		#Open log file for names not found in master set
@@ -147,11 +149,15 @@ def main(args):
 	readNames = getTargetNames(args)
 	# Create dictionary of all sequences
 	SeqMaster = readFasta(args)
-
+	# Write to cluster files if OrthoMCL mode.
 	if args.OrthoMCLMode:
 		orthomode(readNames, SeqMaster, args)
+	# Write each seq from namefile to individual fasta.
+	# If no namefile, write all input seqs to own file.
 	elif args.splitMode:
 		splitmode(SeqMaster, args)
+	# Write selected seqs to single fasta
+	# If no namefile write all seqs back out to single file. Useful for format cleanup.
 	else:
 		filtermode(readNames, SeqMaster, args)
 
@@ -160,6 +166,9 @@ if __name__== '__main__':
 	parser = argparse.ArgumentParser(
 						description='Takes a multi-fasta file and a list of sequence names, prints named sequences to a new fasta. Or splits multi-fasta into single files. ',
 						prog='SubsetFastaByName')
+	parser.add_argument('-v', '--version', 
+						action='version', 
+						version='%(prog)s {version}'.format(version=__version__))
 	parser.add_argument("-i", "--inFasta",
 						required=True,
 						type=str,
@@ -184,8 +193,7 @@ if __name__== '__main__':
 	parser.add_argument('--OrthoMCLMode',
 						action='store_true',
 						default=False,
-						help='If set .')
-
+						help='If set treat nameFile as "groups" output from OrthoMCL clustering. Write member sequences to Cluster output files as multifasta.')
 	args = parser.parse_args()
 
 	main(args);
