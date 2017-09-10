@@ -1,4 +1,4 @@
-# subset-fasta-by-name
+# fastsub
 
 A collection of functions for subsetting and reformatting sequences from fasta files.
 
